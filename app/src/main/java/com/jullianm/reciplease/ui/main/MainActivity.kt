@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.TabLayout
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -21,30 +23,28 @@ import com.jullianm.reciplease.ui.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 
-
-    private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     private lateinit var tabLayout: TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
-
-        // Set up the ViewPager with the sections adapter.
-        container.adapter = mSectionsPagerAdapter
-
-        title = "Reciplease"
-
         tabLayout = findViewById(R.id.tabs)
-        tabLayout.setupWithViewPager(container)
+
+        switchToFragment(SearchFragment.newInstance())
+
+        tabLayout.addOnTabSelectedListener(TabListener())
 
     }
 
+    open fun switchToFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, fragment)
+            .commit()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -52,43 +52,31 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
+    inner class TabListener: TabLayout.OnTabSelectedListener {
 
-        if (id == R.id.action_settings) {
-            return true
-        }
+        override fun onTabSelected(tab: TabLayout.Tab) {
+            val tabItemSelected = if (TabItem.SEARCH.ordinal == tab.position) TabItem.SEARCH else TabItem.FAVORITES
 
-        return super.onOptionsItemSelected(item)
-    }
-
-
-    /**
-     * A [FragmentPagerAdapter] that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-
-        private val pageTitles = listOf("Search", "Favorites")
-
-        override fun getItem(position: Int): Fragment {
-            val tabItemSelected = if (TabItem.SEARCH.ordinal == position) TabItem.SEARCH else TabItem.FAVORITES
-            return when (tabItemSelected) {
+            val fragment = when (tabItemSelected) {
                 TabItem.SEARCH -> SearchFragment.newInstance()
                 TabItem.FAVORITES -> FavoritesFragment.newInstance()
             }
+
+            switchToFragment(fragment)
+
         }
 
-        override fun getCount(): Int {
-            return pageTitles.count()
+        override fun onTabUnselected(tab: TabLayout.Tab) {
+
+        }
+        override fun onTabReselected(tab: TabLayout.Tab) {
+
         }
 
-        override fun getPageTitle(position: Int): CharSequence? {
-            return pageTitles[position]
-        }
     }
 
 }
+
+
+
+
