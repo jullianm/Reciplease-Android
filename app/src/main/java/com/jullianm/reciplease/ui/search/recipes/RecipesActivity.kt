@@ -1,4 +1,4 @@
-package com.jullianm.reciplease.ui.search
+package com.jullianm.reciplease.ui.search.recipes
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -15,8 +15,16 @@ class RecipesActivity : MainActivity() {
         setContentView(R.layout.activity_recipes)
     }
 
-
     override fun switchToFragment(fragment: Fragment) {
+        val fragment = RecipesFragment.newInstance()
+        val extras = intent.getStringArrayListExtra("INGREDIENTS_EXTRA")
+        val args = Bundle()
+        args.putStringArrayList("INGREDIENTS_EXTRA", extras)
+        fragment.arguments =  args
 
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.recipes_container, fragment)
+            .commit()
     }
 }

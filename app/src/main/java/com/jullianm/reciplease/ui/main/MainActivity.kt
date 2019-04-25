@@ -1,27 +1,15 @@
 package com.jullianm.reciplease.ui.main
 
-import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.TabLayout
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import com.jullianm.reciplease.R
 import com.jullianm.reciplease.model.TabItem
 import com.jullianm.reciplease.ui.favorites.FavoritesFragment
-import com.jullianm.reciplease.ui.search.SearchFragment
-
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_main.view.*
+import com.jullianm.reciplease.ui.search.ingredients.SearchFragment
 
 open class MainActivity : AppCompatActivity() {
 

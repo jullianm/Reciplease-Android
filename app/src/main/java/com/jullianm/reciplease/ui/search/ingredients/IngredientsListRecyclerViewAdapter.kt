@@ -1,4 +1,4 @@
-package com.jullianm.reciplease.ui.search
+package com.jullianm.reciplease.ui.search.ingredients
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
