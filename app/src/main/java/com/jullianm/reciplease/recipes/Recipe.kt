@@ -5,5 +5,5 @@ import com.jullianm.reciplease.model.RecipeModel
 import com.jullianm.reciplease.model.RecipeObject
 
 interface Recipe {
-    fun getRecipes(ingredients: List<String>): LiveData<List<RecipeModel>>
+    fun getRecipes(ingredients: List<String>, callback: RecipesHandler)
 }

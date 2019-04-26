@@ -1,6 +1,7 @@
 package com.jullianm.reciplease.model
 
 import android.media.Image
+import android.net.Uri
 import java.net.URL
 
 data class RecipeModel(
@@ -9,8 +10,8 @@ data class RecipeModel(
     val portions: List<String>?,
     val rating: String?,
     val time: String,
-    val image: Image?,
-    val instructions: URL?
+    val image: String?,
+    val instructions: String?
 )
 
 
