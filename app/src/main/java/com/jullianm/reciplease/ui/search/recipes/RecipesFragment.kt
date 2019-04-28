@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 
 import com.jullianm.reciplease.R
 import com.jullianm.reciplease.model.RecipeModel
@@ -20,13 +21,10 @@ class RecipesFragment : Fragment() {
 
     private lateinit var recipesList: RecyclerView
     private lateinit var recipesViewModel: RecipesViewModel
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.recipes_fragment, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -35,7 +33,8 @@ class RecipesFragment : Fragment() {
         recipesViewModel = ViewModelProviders.of(this).get(RecipesViewModel::class.java)
 
         view?.let {
-            recipesList = it.findViewById<RecyclerView>(R.id.recipes_list)
+            progressBar = it.findViewById(R.id.recipes_progress_bar)
+            recipesList = it.findViewById(R.id.recipes_list)
             recipesList.layoutManager = LinearLayoutManager(activity)
             recipesList.adapter = RecipesListRecyclerViewAdapter(ArrayList())
         }
@@ -43,6 +42,7 @@ class RecipesFragment : Fragment() {
 
         recipesViewModel.getRecipes(ingredients) { recipes ->
             if (recipes != null) recipesList.adapter =  RecipesListRecyclerViewAdapter(recipes)
+            progressBar.visibility = View.GONE
         }
 
     }

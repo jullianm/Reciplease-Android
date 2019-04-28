@@ -14,7 +14,6 @@ import android.widget.EditText
 import com.jullianm.reciplease.R
 import com.jullianm.reciplease.ui.search.recipes.RecipesActivity
 
-
 class SearchFragment : Fragment() {
 
     private lateinit var ingredientsList: RecyclerView
@@ -25,11 +24,7 @@ class SearchFragment : Fragment() {
 
     val lists = ArrayList<String>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
