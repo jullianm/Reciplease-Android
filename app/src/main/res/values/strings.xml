@@ -12,4 +12,7 @@
     <string name="search_recipes">Search for recipes</string>
     <string name="your_ingredients">Your ingredients :</string>
     <string name="clear">Clear</string>
+    <string name="directions">Get Directions</string>
+    <string name="ingredients">Ingredients :</string>
+
 </resources>

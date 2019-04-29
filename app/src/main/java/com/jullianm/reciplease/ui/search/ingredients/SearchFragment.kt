@@ -40,7 +40,7 @@ class SearchFragment : Fragment() {
             addButton = it.findViewById(R.id.add_button)
             clearButton = it.findViewById(R.id.clear_button)
             ingredientInput = it.findViewById(R.id.ingredient_input)
-            searchButton = it.findViewById(R.id.search_button)
+            searchButton = it.findViewById(R.id.direction_button)
 
             addButton.setOnClickListener {
                 lists.add(ingredientInput.text.toString())

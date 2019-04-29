@@ -1,4 +1,4 @@
-package com.jullianm.reciplease.ui
+package com.jullianm.reciplease.ui.tab
 
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -9,6 +9,7 @@ import com.jullianm.reciplease.R
 import com.jullianm.reciplease.model.TabItem
 import com.jullianm.reciplease.ui.favorites.FavoritesFragment
 
+// Base class for search and favorites activities
 open class TabActivity(private val fragmentContainer: Int): AppCompatActivity() {
 
     lateinit var searchTabFragment: Fragment
@@ -42,12 +43,9 @@ open class TabActivity(private val fragmentContainer: Int): AppCompatActivity() 
 
         }
 
-        override fun onTabUnselected(tab: TabLayout.Tab) {
+        override fun onTabUnselected(tab: TabLayout.Tab) {}
 
-        }
-        override fun onTabReselected(tab: TabLayout.Tab) {
-
-        }
+        override fun onTabReselected(tab: TabLayout.Tab) {}
 
     }
 }

@@ -2,7 +2,7 @@ package com.jullianm.reciplease.ui.search.recipes
 
 import android.os.Bundle
 import com.jullianm.reciplease.R
-import com.jullianm.reciplease.ui.TabActivity
+import com.jullianm.reciplease.ui.tab.TabActivity
 
 class RecipesActivity : TabActivity(R.id.recipes_container) {
 

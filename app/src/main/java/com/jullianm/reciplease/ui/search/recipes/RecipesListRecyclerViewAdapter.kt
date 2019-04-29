@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jullianm.reciplease.R
 import com.jullianm.reciplease.model.RecipeModel
+import com.jullianm.reciplease.model.RecyclerViewClickListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recipes_list_view_holder.view.*
 import java.util.zip.Inflater
 
-class RecipesListRecyclerViewAdapter(val recipesList: List<RecipeModel>): RecyclerView.Adapter<RecipesListViewHolder>() {
+class RecipesListRecyclerViewAdapter(val recipesList: List<RecipeModel>, val listener: RecyclerViewClickListener): RecyclerView.Adapter<RecipesListViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecipesListViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.recipes_list_view_holder, p0, false)
-        return RecipesListViewHolder(view)
+        return RecipesListViewHolder(view, listener)
     }
 
     override fun getItemCount(): Int {
@@ -27,6 +28,6 @@ class RecipesListRecyclerViewAdapter(val recipesList: List<RecipeModel>): Recycl
             .load(recipesList[p1].image)
             .fit()
             .into(p0.recipeImage)
-
     }
+
 }

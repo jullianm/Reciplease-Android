@@ -3,7 +3,7 @@ package com.jullianm.reciplease.ui.search.ingredients
 import android.os.Bundle
 import android.view.Menu
 import com.jullianm.reciplease.R
-import com.jullianm.reciplease.ui.TabActivity
+import com.jullianm.reciplease.ui.tab.TabActivity
 
 class SearchActivity : TabActivity(R.id.container) {
 

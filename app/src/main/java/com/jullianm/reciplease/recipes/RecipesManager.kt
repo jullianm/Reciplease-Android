@@ -25,6 +25,7 @@ object RecipesManager: Recipe {
 
     private const val appId = "dda042d2"
     private const val appKey = "6b4afceb278126620adba7ff792f8b86"
+    private const val defaultUrl = "http://i2.yummly.com/Hot-Turkey-Salad-Sandwiches-Allrecipes.l.png"
     private val scope = CoroutineScope(Dispatchers.Main + Job())
 
     private val api = Injection.provideYummlyAPI()
@@ -74,9 +75,9 @@ object RecipesManager: Recipe {
                 if (image.hostedLargeUrl != null) return image.hostedLargeUrl
                 else if (image.hostedMediumUrl != null) return image.hostedMediumUrl
             }
-            return "http://i2.yummly.com/Hot-Turkey-Salad-Sandwiches-Allrecipes.l.png"
+            return defaultUrl
         } else {
-            return "http://i2.yummly.com/Hot-Turkey-Salad-Sandwiches-Allrecipes.l.png"
+            return defaultUrl
         }
     }
 
