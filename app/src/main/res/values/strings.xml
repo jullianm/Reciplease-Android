@@ -14,5 +14,7 @@
     <string name="clear">Clear</string>
     <string name="directions">Get Directions</string>
     <string name="ingredients">Ingredients :</string>
+    <string name="recipe_added">"Recipe added to your favorites list"</string>
+    <string name="recipe_deleted">"This recipe has been removed from favorites"</string>
 
 </resources>

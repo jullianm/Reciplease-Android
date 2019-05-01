@@ -1,15 +1,15 @@
 package com.jullianm.reciplease.app
 
+import android.content.Context
+import androidx.room.Room
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.jullianm.reciplease.recipes.Recipe
-import com.jullianm.reciplease.recipes.RecipesManager
-import com.jullianm.reciplease.recipes.YummlyAPI
+import com.jullianm.reciplease.recipes.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object Injection {
 
-    fun provideRecipesManager(): Recipe = RecipesManager
+    fun provideRecipesNetworkManager(): RecipeNetwork = RecipesNetworkManager
 
     private fun provideRetrofit() : Retrofit {
         return Retrofit.Builder()
@@ -20,5 +20,13 @@ object Injection {
     }
 
     fun provideYummlyAPI(): YummlyAPI = provideRetrofit().create(YummlyAPI::class.java)
+
+    fun provideRecipesDataManager(): RecipeData = RecipesDataManager
+
+    fun provideAppDatabase(context: Context): AppDatabase {
+        return Room
+            .databaseBuilder(context, AppDatabase::class.java, "recipes-database")
+            .build()
+    }
 
 }

@@ -1,16 +1,13 @@
-package com.jullianm.reciplease.ui.search.recipes
+package com.jullianm.reciplease.ui.tab.search.recipes
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jullianm.reciplease.R
 import com.jullianm.reciplease.model.RecipeModel
 import com.jullianm.reciplease.model.RecyclerViewClickListener
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.recipes_list_view_holder.view.*
-import java.util.zip.Inflater
 
-class RecipesListRecyclerViewAdapter(val recipesList: List<RecipeModel>, val listener: RecyclerViewClickListener): RecyclerView.Adapter<RecipesListViewHolder>() {
+class RecipesListRecyclerViewAdapter(val recipesList: List<RecipeModel>, val listener: RecyclerViewClickListener): androidx.recyclerview.widget.RecyclerView.Adapter<RecipesListViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecipesListViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.recipes_list_view_holder, p0, false)

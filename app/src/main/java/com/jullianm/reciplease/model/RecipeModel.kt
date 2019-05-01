@@ -3,18 +3,22 @@ package com.jullianm.reciplease.model
 import android.media.Image
 import android.net.Uri
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 import java.net.URL
 
+@Entity
 @Parcelize
 data class RecipeModel(
-    val name: String,
-    val ingredients: String,
-    val portions: List<String>?,
-    val rating: String?,
-    val time: String,
-    val image: String?,
-    val instructions: String?
+    @PrimaryKey @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "ingredients") val ingredients: String,
+    @ColumnInfo(name = "portions") val portions: List<String>?,
+    @ColumnInfo(name = "rating") val rating: String?,
+    @ColumnInfo(name = "time") val time: String,
+    @ColumnInfo(name = "image") val image: String?,
+    @ColumnInfo(name = "instructions") val instructions: String?
 ): Parcelable
 
 

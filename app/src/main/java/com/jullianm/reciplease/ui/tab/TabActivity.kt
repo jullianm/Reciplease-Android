@@ -1,31 +1,34 @@
 package com.jullianm.reciplease.ui.tab
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayout
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import com.jullianm.reciplease.R
 import com.jullianm.reciplease.model.TabItem
-import com.jullianm.reciplease.ui.favorites.FavoritesFragment
+import com.jullianm.reciplease.ui.tab.favorites.FavoritesFragment
+import com.jullianm.reciplease.ui.tab.search.ingredients.SearchFragment
 
 // Base class for search and favorites activities
-open class TabActivity(private val fragmentContainer: Int): AppCompatActivity() {
+open class TabActivity: AppCompatActivity() {
 
-    lateinit var searchTabFragment: Fragment
+    var searchTabFragment: Fragment = SearchFragment.newInstance()
     private var favoritesTabFragment = FavoritesFragment.newInstance()
     lateinit var tabLayout: TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         tabLayout = findViewById(R.id.tabs)
         tabLayout.addOnTabSelectedListener(TabListener())
+
+        switchToFragment(searchTabFragment)
     }
 
-    open fun switchToFragment(fragment: Fragment) {
+    open fun switchToFragment(fragment: androidx.fragment.app.Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(fragmentContainer, fragment)
+            .replace(R.id.container, fragment)
             .commit()
     }
 

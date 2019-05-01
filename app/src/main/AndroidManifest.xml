@@ -11,12 +11,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.search.recipedetails.RecipeDetailsActivity">
+        <activity android:name="com.jullianm.reciplease.ui.tab.search.recipedetails.RecipeDetailsActivity">
         </activity>
-        <activity android:name=".ui.search.recipes.RecipesActivity">
+        <activity android:name="com.jullianm.reciplease.ui.tab.search.recipes.RecipesActivity">
         </activity>
         <activity
-                android:name=".ui.search.ingredients.SearchActivity"
+                android:name=".ui.tab.TabActivity"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:label="@string/app_name"

@@ -1,27 +1,16 @@
 package com.jullianm.reciplease.recipes
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.net.Uri
 import android.util.Log
 import com.jullianm.reciplease.app.Injection
 import com.jullianm.reciplease.model.RecipeModel
 import com.jullianm.reciplease.model.RecipeObject
 import com.jullianm.reciplease.model.RecipesObjects
-import com.jullianm.reciplease.ui.search.recipes.RecipesFragment
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.lang.Exception
-import java.net.URI
-import java.net.URL
-import kotlin.coroutines.CoroutineContext
 
 typealias RecipesHandler = (ArrayList<RecipeModel>) -> Unit
 
-object RecipesManager: Recipe {
+object RecipesNetworkManager: RecipeNetwork {
 
     private const val appId = "dda042d2"
     private const val appKey = "6b4afceb278126620adba7ff792f8b86"

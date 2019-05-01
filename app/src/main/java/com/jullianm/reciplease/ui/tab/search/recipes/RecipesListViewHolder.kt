@@ -1,13 +1,11 @@
-package com.jullianm.reciplease.ui.search.recipes
+package com.jullianm.reciplease.ui.tab.search.recipes
 
-import android.media.Image
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.jullianm.reciplease.R
 import com.jullianm.reciplease.model.RecyclerViewClickListener
-import org.w3c.dom.Text
 
 class RecipesListViewHolder(itemView: View, val itemListener: RecyclerViewClickListener): RecyclerView.ViewHolder(itemView), View.OnClickListener {
 

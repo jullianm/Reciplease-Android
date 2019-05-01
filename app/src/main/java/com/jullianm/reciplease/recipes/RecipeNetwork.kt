@@ -1,9 +1,9 @@
 package com.jullianm.reciplease.recipes
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.jullianm.reciplease.model.RecipeModel
 import com.jullianm.reciplease.model.RecipeObject
 
-interface Recipe {
+interface RecipeNetwork {
     fun getRecipes(ingredients: List<String>, callback: RecipesHandler)
 }
