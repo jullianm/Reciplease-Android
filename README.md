@@ -23,4 +23,4 @@ Reciplease is a recipes app that aims at helping the user find a list of recipes
 
 - Yummly API (will cease operation in September 30, 2019)
 
-![](Reciplease-android.gif)
+![](reciplease-android.gif)
