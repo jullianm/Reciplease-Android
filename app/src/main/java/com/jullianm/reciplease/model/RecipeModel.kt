@@ -8,17 +8,19 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 import java.net.URL
+import java.util.*
 
 @Entity
 @Parcelize
 data class RecipeModel(
-    @PrimaryKey @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "ingredients") val ingredients: String,
     @ColumnInfo(name = "portions") val portions: List<String>?,
     @ColumnInfo(name = "rating") val rating: String?,
     @ColumnInfo(name = "time") val time: String,
     @ColumnInfo(name = "image") val image: String?,
-    @ColumnInfo(name = "instructions") val instructions: String?
+    @ColumnInfo(name = "instructions") val instructions: String?,
+    @PrimaryKey(autoGenerate = true) var id: Int = 0
 ): Parcelable
 
 
