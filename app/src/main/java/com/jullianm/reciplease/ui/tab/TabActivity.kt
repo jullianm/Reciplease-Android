@@ -13,8 +13,9 @@ import com.jullianm.reciplease.ui.tab.search.ingredients.SearchFragment
 open class TabActivity: AppCompatActivity() {
 
     var searchTabFragment: Fragment = SearchFragment.newInstance()
-    private var favoritesTabFragment = FavoritesFragment.newInstance()
+    var favoritesTabFragment: Fragment = FavoritesFragment.newInstance()
     lateinit var tabLayout: TabLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +23,10 @@ open class TabActivity: AppCompatActivity() {
         tabLayout = findViewById(R.id.tabs)
         tabLayout.addOnTabSelectedListener(TabListener())
 
-        switchToFragment(searchTabFragment)
+        switchToFragment()
     }
 
-    open fun switchToFragment(fragment: androidx.fragment.app.Fragment) {
+    open fun switchToFragment(fragment: androidx.fragment.app.Fragment = searchTabFragment) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.container, fragment)

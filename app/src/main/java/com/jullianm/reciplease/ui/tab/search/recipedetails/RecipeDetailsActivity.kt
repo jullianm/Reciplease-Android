@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import com.jullianm.reciplease.model.RecipeModel
+import com.jullianm.reciplease.model.TabItem
 import com.jullianm.reciplease.ui.tab.search.recipes.RecipesFragment
 import com.jullianm.reciplease.ui.tab.TabActivity
 
@@ -22,6 +23,15 @@ class RecipeDetailsActivity : TabActivity(), OnItemRemovedListener {
         searchTabFragment = fragment
 
         super.onCreate(savedInstanceState)
+
+        if (tabItem == TabItem.SEARCH.ordinal) {
+            searchTabFragment = fragment
+            tabLayout.getTabAt(0)?.select()
+        } else {
+            favoritesTabFragment = fragment
+            tabLayout.getTabAt(1)?.select()
+        }
+
     }
 
     override fun itemIsRemoved() {
