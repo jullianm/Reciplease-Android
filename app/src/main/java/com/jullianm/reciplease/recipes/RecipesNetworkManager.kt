@@ -12,8 +12,8 @@ typealias RecipesHandler = (ArrayList<RecipeModel>) -> Unit
 
 object RecipesNetworkManager: RecipeNetwork {
 
-    private const val appId = "dda042d2"
-    private const val appKey = "6b4afceb278126620adba7ff792f8b86"
+    private const val appId = "YOUR_APP_ID"
+    private const val appKey = "YOUR_APP_KEY"
     private const val defaultUrl = "http://i2.yummly.com/Hot-Turkey-Salad-Sandwiches-Allrecipes.l.png"
     private val scope = CoroutineScope(Dispatchers.Main + Job())
 
