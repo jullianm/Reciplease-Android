@@ -11,7 +11,6 @@ class RecipesListViewHolder(itemView: View, val itemListener: RecyclerViewClickL
 
     val recipeImage = itemView.findViewById<ImageView>(R.id.recipe_image)
     val recipeName = itemView.findViewById<TextView>(R.id.recipe_name)
-    val recipeIngredients = itemView.findViewById<TextView>(R.id.recipe_ingredient)
 
     init {
         itemView.setOnClickListener(this)

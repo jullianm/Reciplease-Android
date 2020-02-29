@@ -14,9 +14,7 @@ import java.util.*
 @Parcelize
 data class RecipeModel(
     @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "ingredients") val ingredients: String,
-    @ColumnInfo(name = "portions") val portions: List<String>?,
-    @ColumnInfo(name = "rating") val rating: String?,
+    @ColumnInfo(name = "ingredients") val ingredients: List<String>,
     @ColumnInfo(name = "time") val time: String,
     @ColumnInfo(name = "image") val image: String?,
     @ColumnInfo(name = "instructions") val instructions: String?,

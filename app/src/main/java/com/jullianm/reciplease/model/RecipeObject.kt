@@ -1,17 +1,18 @@
 package com.jullianm.reciplease.model
 
-import android.net.Uri
-import java.net.URL
-
-data class RecipeObject(val images: List<Image>?, val ingredientLines: List<String>, val source: Source) {
-
-    data class Image(
-        val hostedLargeUrl: String?,
-        val hostedMediumUrl: String?,
-        val hostedSmallUrl: String?
+data class RecipeObject(val hits: List<Hits>) {
+    data class Hits(
+        val recipe: Recipe
     )
 
-    data class Source(
-        val sourceRecipeUrl: String
+    data class Recipe (
+            val uri: String,
+            val label: String,
+            val image: String,
+            val source: String,
+            val url: String,
+            val ingredientLines: List<String>,
+            val totalTime: Long
     )
 }
+

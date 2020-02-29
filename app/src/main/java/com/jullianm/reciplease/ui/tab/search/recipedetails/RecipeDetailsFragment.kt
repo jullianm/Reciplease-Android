@@ -8,6 +8,7 @@ import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -80,7 +81,7 @@ class RecipeDetailsFragment : androidx.fragment.app.Fragment() {
 
         recipeIngredientsRecyclerView = view.findViewById(R.id.recipe_ingredients_recycler_view)
         recipeIngredientsRecyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
-        recipeIngredientsRecyclerView.adapter = RecipeDetailsRecyclerViewAdapter(recipe.portions!!)
+        recipeIngredientsRecyclerView.adapter = RecipeDetailsRecyclerViewAdapter(recipe.ingredients)
 
         Picasso.get().load(recipe.image).fit().into(recipeImage)
 

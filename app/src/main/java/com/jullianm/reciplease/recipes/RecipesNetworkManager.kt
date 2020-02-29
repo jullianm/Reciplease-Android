@@ -4,7 +4,6 @@ import android.util.Log
 import com.jullianm.reciplease.app.Injection
 import com.jullianm.reciplease.model.RecipeModel
 import com.jullianm.reciplease.model.RecipeObject
-import com.jullianm.reciplease.model.RecipesObjects
 import kotlinx.coroutines.*
 import java.lang.Exception
 
@@ -14,10 +13,10 @@ object RecipesNetworkManager: RecipeNetwork {
 
     private const val appId = "YOUR_APP_ID"
     private const val appKey = "YOUR_APP_KEY"
-    private const val defaultUrl = "http://i2.yummly.com/Hot-Turkey-Salad-Sandwiches-Allrecipes.l.png"
+    private const val defaultUrl = "https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg"
     private val scope = CoroutineScope(Dispatchers.Main + Job())
 
-    private val api = Injection.provideYummlyAPI()
+    private val api = Injection.provideEdamamAPI()
 
     override fun getRecipes(ingredients: List<String>, callback: RecipesHandler) {
 
@@ -28,8 +27,8 @@ object RecipesNetworkManager: RecipeNetwork {
                 val recipes = ArrayList<RecipeModel>()
 
                 if (results != null)
-                    for (recipe in results.matches) {
-                        recipes.add(getMoreDetailsForRecipe(recipe))
+                    for (hit in results.hits) {
+                        recipes.add(getRecipeModel(hit))
                     }
 
                 callback(recipes)
@@ -40,34 +39,17 @@ object RecipesNetworkManager: RecipeNetwork {
         }
     }
 
-    private suspend fun getRecipesDetails(ingredients: List<String>): RecipesObjects? {
-        return api.getRecipes(appId, appKey, ingredients, 20).await().body()
+    private suspend fun getRecipesDetails(ingredients: List<String>): RecipeObject? {
+        return api.getRecipes(appId, appKey, ingredients).await().body()
     }
 
-    private suspend fun getMoreDetailsForRecipe(recipe: RecipesObjects.Matches): RecipeModel {
-        api.getRecipe(recipe.id, appId, appKey).await().body().let { moreDetails ->
-            return RecipeModel(
-                recipe.recipeName,
-                recipe.ingredients.joinToString(),
-                moreDetails?.ingredientLines,
-                recipe.rating.toString(),
-                recipe.totalTimeInSeconds.toString(),
-                getValidImageURL(moreDetails?.images),
-                moreDetails?.source?.sourceRecipeUrl
-            )
-        }
+    private suspend fun getRecipeModel(hit: RecipeObject.Hits): RecipeModel {
+        return RecipeModel(
+                name = hit.recipe.label,
+                ingredients = hit.recipe.ingredientLines,
+                time = hit.recipe.totalTime.toString(),
+                image = hit.recipe.image,
+                instructions = hit.recipe.url
+        )
     }
-
-    private fun getValidImageURL(images: List<RecipeObject.Image>?): String {
-        return if (images != null) {
-            for (image in images) {
-                if (image.hostedLargeUrl != null) return image.hostedLargeUrl
-                else if (image.hostedMediumUrl != null) return image.hostedMediumUrl
-            }
-            return defaultUrl
-        } else {
-            return defaultUrl
-        }
-    }
-
 }

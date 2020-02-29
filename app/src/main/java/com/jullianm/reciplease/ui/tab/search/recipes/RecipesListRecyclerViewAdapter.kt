@@ -20,12 +20,10 @@ class RecipesListRecyclerViewAdapter(val recipesList: List<RecipeModel>, val lis
 
     override fun onBindViewHolder(p0: RecipesListViewHolder, p1: Int) {
         p0.recipeName.text = recipesList[p1].name
-        val ingredients = recipesList[p1].ingredients
-        p0.recipeIngredients.text = ingredients.substring(0, 1).toUpperCase() + ingredients.substring(1)
         Picasso.get()
-            .load(recipesList[p1].image)
-            .fit()
-            .into(p0.recipeImage)
+                .load(recipesList[p1].image)
+                .fit()
+                .into(p0.recipeImage)
     }
 
 }

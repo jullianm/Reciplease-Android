@@ -13,13 +13,13 @@ object Injection {
 
     private fun provideRetrofit() : Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.yummly.com/")
+            .baseUrl("https://api.edamam.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
     }
 
-    fun provideYummlyAPI(): YummlyAPI = provideRetrofit().create(YummlyAPI::class.java)
+    fun provideEdamamAPI(): EdamamAPI = provideRetrofit().create(EdamamAPI::class.java)
 
     fun provideRecipesDataManager(): RecipeData = RecipesDataManager
 
